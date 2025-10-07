@@ -6,7 +6,7 @@ interface ButtonPrimaryProps {
   href?: string;
   size?: "default" | "large";
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<any>) => void;
 }
 
 const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
@@ -19,13 +19,12 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
 
   const sizeStyles =
     size === "large"
-      ? { px: 4, py: 2, fontSize: "1.125rem", fontWeight: 600 } // text-lg
-      : { px: 3, py: 1.5, fontSize: "1rem", fontWeight: 600 }; // text-base
+      ? { px: 4, py: 2, fontSize: "1.125rem", fontWeight: 600 }
+      : { px: 3, py: 1.5, fontSize: "1rem", fontWeight: 600 };
 
-  const baseColor =
-    theme.palette.mode === "light" ? "#DC9518" : "#F0A93E";
-  const hoverColor =
-    theme.palette.mode === "light" ? "#B87610" : "#D4881F";
+  // Colores originales respetados
+  const baseColor = "#DC9518";
+  const hoverColor = "#B87610";
 
   return (
     <Button
