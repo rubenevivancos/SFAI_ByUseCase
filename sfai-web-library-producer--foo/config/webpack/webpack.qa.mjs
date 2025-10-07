@@ -88,7 +88,7 @@ const config = merge(commonConfig, {
             chunks: ['using_app']
         }),
         new webpack.ProvidePlugin({
-            process: 'process/browser.js',
+            process: 'process/browser',
             Buffer: ['buffer', 'Buffer']
         }),
         new Dotenv()

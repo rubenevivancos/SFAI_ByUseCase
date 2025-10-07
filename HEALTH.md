@@ -1,33 +1,9 @@
-# Health
+- sfai-web-library-consumer--bar: `DONE`
 
-- Version health: 0.0.2
-- true source: develop
-
-## Status
-
-### Legend
-
-⏳ TODO · ⏸️ ON HOLD · 🔄 IN PROGRESS · 👀 TO REVIEW · ❌ FAILED ✅ DONE
-
-## Preconditions of Deployments
-
-- [⏳] pull develop
-- [⏳] use real API
-- [⏳] variables are in `sfai-web-library-consumer--bar/config/variables/no-sensitive`
-- [⏳] variables are in `sfai-web-library-producer--bar/config/variables/no-sensitive`
-- [⏳] generated library local is pushed in consumer
-- [⏳] jira issue link for integration
-- [⏳] `changelog.md` exists in library
-- [⏳] library has name of repository
-
-## Distribution
-
-| Priority | Status | Version Library | Goal                                                                                   | Working in localhost             | Working in npm local             | Working in npm aws               | URL                                                                                  |
-|----------|--------|-----------------|----------------------------------------------------------------------------------------|----------------------------------|----------------------------------|----------------------------------|--------------------------------------------------------------------------------------|
-| P0       | ⏳ TODO | `0.0.x`         | `sfai-foobar--lib-web-mirror` - Apply mirror `1.0.2` in library, producer and consumer | ⏳ TODO                           | ⏳ TODO                           | ⏸️ ON HOLD                       | https://github.com/softwarefactoryai/sfai-foobar--lib-web-mirror/tree/main           |
-| P1       | ⏳ TODO | `0.0.x`         | Health - preconditions of deployments are ready                                        | ⏳ TODO                           | ⏳ TODO                           | ⏸️ ON HOLD                       | https://github.com/softwarefactoryai/sfai-foobar--lib-web-mirror/blob/main/HEALTH.md |
-| P2       | ⏳ TODO | `0.0.x`         | Generate library `sfai-web-library-producer--foo/<LIBRARY_NAME>`                       | ⏳ TODO                           | ⏳ TODO                           | ⏸️ ON HOLD                       |                                                                                      |
-| P3       | ⏳ TODO | `0.0.x`         | Test `sfai-web-library-producer--foo/using_app`                                        | ⏳ TODO                           | ⏳ TODO                           | ⏸️ ON HOLD                       |                                                                                      |
-| P4       | ⏳ TODO | `0.0.x`         | Test `sfai-web-library-consumer--bar/using_app`                                        | ⏳ TODO                           | ⏳ TODO                           | ⏸️ ON HOLD                       |                                                                                      |
-| P5       | ⏳ TODO | `0.0.x`         | QA                                                                                     | ⏳ TODO                           | ⏳ TODO                           | ⏸️ ON HOLD                       |                                                                                      |
-| P6       | ⏳ TODO | `0.0.x`         | Integrate `sfai-app`                                                                   | ⏸️ ON HOLD     (Release Manager) | ⏸️ ON HOLD     (Release Manager) | ⏸️ ON HOLD     (Release Manager) |                                                                                      |
+| Priority | Status | Module                                            | Working in development | Working in npm local | Working in npm cloud | Goal                                                           | Comment                               |   |
+|----------|--------|---------------------------------------------------|------------------------|----------------------|----------------------|----------------------------------------------------------------|---------------------------------------|---|
+| HIGHEST  | DONE   | `sfai-web-project-template`                       | Yes                    | NA                   | NA                   | Have a stable template or skafolding to create another modules | -                                     |   |
+| HIGHEST  | DONE   | `sfai-web-library-producer--foo/sfai_library_foo` | Yes                    | Yes                  | Pending              | Publish library in code artifact                               | Module of feature                     |   |
+| HIGHEST  | DONE   | `sfai-web-library-producer--foo/using_app`        | Yes                    | NA                   | NA                   | Publish library in code artifact                               | Module of feature                     |   |
+| HIGHEST  | WIP    | `sfai-web-library-consumer--bar`                  | Yes                    | Pending              | Pending              |                                                                | Without use libraries                 |   |
+| HIGH     | WIP    | `sfai-web-library-producer--bar`                  | Yes                    | Yes                  | Pending              | Probar la feature `sfai_library_foo` desde el using app        | Fork from `sfai-web-project-template` |   |

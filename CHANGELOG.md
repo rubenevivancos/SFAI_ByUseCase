@@ -1,9 +1,5 @@
 # Releases
 
-## 1.0.1
+## 0.0.3
 
-- update health
-
-## 1.0.0
-
-- stable version
+- catalog is working in consumer with webpack and without filter

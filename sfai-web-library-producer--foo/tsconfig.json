@@ -24,8 +24,8 @@
       "@sfai-library-mjs/*": ["sfai_library_mjs/*"],
       "@sfai-library-nodejs/*": ["sfai_library_nodejs/*"],
       "@sfai-library-stub/*": ["sfai_library_stub/*"],
-      "@sfai-library-foo-impl/*": ["sfai_library_foo/impl/*"],
-      "@sfai-images-env/*": ["sfai_library_foo/impl/res/images/dev/*"]
+      "@sfai-library-product-catalog-impl/*": ["sfai_library_product_catalog/impl/*"],
+      "@sfai-images-env/*": ["sfai_library_product_catalog/impl/res/images/dev/*"]
     }
   },
   "include": [

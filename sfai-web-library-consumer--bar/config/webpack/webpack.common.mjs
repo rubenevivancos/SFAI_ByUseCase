@@ -66,10 +66,10 @@ export default {
     },
     module: {
         rules: [
-             // ✅ Permite imports ESM sin extensión desde paquetes (p. ej. '@mui/material/styles')
+            // ✅ Permite imports ESM sin extensión desde paquetes (p. ej. '@mui/material/styles')
             {
-              test: /\.m?js$/,
-              resolve: { fullySpecified: false }
+                test: /\.m?js$/,
+                resolve: {fullySpecified: false}
             },
             {
                 test: /\.(ts|tsx)$/,
@@ -131,7 +131,7 @@ export default {
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.css'], // Extensiones que Webpack debe manejar
         fallback: {
-            process: 'process/browser.js',
+            process: 'process/browser',
             buffer: 'buffer',
             http: 'stream-http',
             https: 'https-browserify',
@@ -164,7 +164,7 @@ export default {
             chunks: ['using_app']
         }),
         new webpack.ProvidePlugin({
-            process: 'process/browser.js',
+            process: 'process/browser',
             Buffer: ['buffer', 'Buffer']
         }),
         // DefinePlugin para inyectar todas las variables de entorno cargadas con dotenv
