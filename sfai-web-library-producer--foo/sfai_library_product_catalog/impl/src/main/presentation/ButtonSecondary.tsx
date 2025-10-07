@@ -1,33 +1,47 @@
-// ButtonSecondary.tsx
-import React from 'react';
-import Button, { type ButtonProps as MuiButtonProps } from '@mui/material/Button';
-import type { SxProps, Theme } from '@mui/material/styles';
+import React from "react";
+import Button from "@mui/material/Button";
 
-interface Props extends MuiButtonProps {
-  sx?: SxProps<Theme>;
+interface ButtonSecondaryProps {
+  href?: string;
+  size?: "default" | "large";
+  children: React.ReactNode;
+  onClick?: () => void;
 }
 
-export default function ButtonSecondary({ children, sx, ...props }: Props) {
+const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
+  href,
+  size = "default",
+  children,
+  onClick,
+}) => {
   return (
     <Button
       variant="outlined"
-      {...props}
+      href={href}
+      onClick={onClick}
       sx={{
-        borderRadius: '12px',
-        textTransform: 'none',
-        px: 3,
-        py: 1.25,
+        textTransform: "none",
         fontWeight: 600,
-        borderWidth: '1px',
-        minHeight: 44,
-        '&:hover': {
-          backgroundColor: (theme) => theme.palette.action.hover,
-          transform: 'translateY(-1px)',
+        fontSize: size === "large" ? "1.125rem" : "1rem",
+        px: size === "large" ? 4 : 3,
+        py: size === "large" ? 2 : 1.5,
+        borderWidth: 2,
+        borderColor: "#DC9518",
+        color: "#DC9518",
+        borderRadius: "20px",
+        transition: "all 0.2s ease-out",
+        "&:hover": {
+          bgcolor: "rgba(220, 149, 24, 0.05)",
+          borderColor: "#B87610",
+          color: "#B87610",
+          transform: "translateY(-2px)",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
         },
-        ...((sx as any) ?? {}),
       }}
     >
       {children}
     </Button>
   );
-}
+};
+
+export default ButtonSecondary;
