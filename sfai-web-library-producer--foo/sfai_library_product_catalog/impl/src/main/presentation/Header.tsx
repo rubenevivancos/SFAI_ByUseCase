@@ -29,10 +29,9 @@ const Header: React.FC = () => {
   return (
     <AppBar
       position="fixed"
-      enableColorOnDark
       sx={{
         backgroundColor: isDarkMode
-          ? theme.palette.background.default // exactamente el color del fondo oscuro
+          ? "#0F1419" // exactamente el color del fondo oscuro
           : "rgba(255,255,255,0.7)",
         color: "text.primary",
         backdropFilter: isDarkMode ? "none" : "blur(16px)",

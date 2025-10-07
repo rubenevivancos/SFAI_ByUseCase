@@ -20,7 +20,9 @@ const Footer: React.FC = () => {
       sx={{
         borderTop: "1px solid",
         borderColor: "divider",
-        backgroundColor: "background.default",
+        backgroundColor: isDarkMode
+          ? "#0F1419" // exactamente el color del fondo oscuro
+          : "rgba(255,255,255,0.7)",
         transition: "background-color 0.3s ease, border-color 0.3s ease",
       }}
     >
