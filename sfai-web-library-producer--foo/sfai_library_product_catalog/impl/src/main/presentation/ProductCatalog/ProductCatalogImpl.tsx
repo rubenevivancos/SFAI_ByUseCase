@@ -509,6 +509,106 @@ const ProductCatalogImpl: React.FC = () => {
       </Box>
 
 
+        {/* Final CTA Section */}
+        <Box
+          sx={{
+            maxWidth: 1440,
+            mx: "auto",
+            px: { xs: 4, md: 30 },
+            py: { xs: 12, md: 16 },
+            mb: 5,
+          }}
+        >
+          <Box
+            sx={{
+              position: "relative",
+              p: { xs: 6, md: 12 },
+              borderRadius: "20px",
+              bgcolor: "var(--surface-glass)",
+              border: "1px solid var(--surface-glass-border)",
+              boxShadow: "var(--glass-shadow)",
+              backdropFilter: "blur(16px)",
+              textAlign: "center",
+              overflow: "hidden",
+              transition: "all 0.3s ease",
+            }}
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to bottom right, var(--gradient-glass-from), transparent, var(--accent)/5)",
+                pointerEvents: "none",
+              }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                top: -100,
+                right: -100,
+                width: 256,
+                height: 256,
+                bgcolor: "var(--accent)/10",
+                borderRadius: "50%",
+                filter: "blur(48px)",
+              }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: -100,
+                left: -100,
+                width: 256,
+                height: 256,
+                bgcolor: "var(--accent)/10",
+                borderRadius: "50%",
+                filter: "blur(48px)",
+              }}
+            />
+
+            <Box sx={{ position: "relative" }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                  mb: 3,
+                }}
+              >
+                Elegí un caso de uso y empezá hoy con SFAI
+              </Typography>
+
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: "1rem", md: "1.25rem" },
+                  color: "var(--text-secondary)",
+                  mb: 6,
+                  maxWidth: 600,
+                  mx: "auto",
+                }}
+              >
+                Te mostramos en 15 minutos cómo se adapta a tu operación.
+              </Typography>
+
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
+                spacing={2}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <ButtonPrimary href="#casos" onClick={handleScrollToCasos}>
+                  Explorar Casos de Uso
+                </ButtonPrimary>
+                <ButtonSecondary href="{{link_contacto}}">
+                  Contactar con un especialista
+                </ButtonSecondary>
+              </Stack>
+            </Box>
+          </Box>
+        </Box>
+
       {/* Footer */}
       <Footer />
     </Box>

@@ -3,6 +3,7 @@ import { ThemeProvider, createTheme, Theme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { getDesignTokens } from "./theme";
 import "./global.css";
+import "../styles/globals.css";
 
 // ✅ Exportar el contexto para poder usarlo en otros componentes
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
