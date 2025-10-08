@@ -16,6 +16,7 @@ import { Users, Clock, Target, MessageSquare, Bot, Plug, TrendingUp, HeadphonesI
 import { CardProject } from "../CardProject";
 import { CardUseCase } from "../CardUseCase";
 import { Testimonial } from "../Testimonial";
+import { FAQItem } from "../FAQItem";
 import '../styles/globals.css';
 
 const ProductCatalogImpl: React.FC = () => {
@@ -124,6 +125,33 @@ const ProductCatalogImpl: React.FC = () => {
       name: 'Ana Silva',
       role: 'CEO',
       company: 'Propiedades del Sur'
+    },
+  ];
+
+  const faqs = [
+    {
+      question: '¿Cuánto tiempo lleva la instalación?',
+      answer: 'La configuración básica toma entre 15-30 minutos. Te guiamos paso a paso y tu asistente puede estar respondiendo el mismo día.'
+    },
+    {
+      question: '¿Qué requisitos necesito?',
+      answer: 'WhatsApp Business API (te ayudamos a obtenerlo sin costo), un listado básico de FAQs y acceso a tus sistemas si querés integraciones. No necesitás conocimientos técnicos.'
+    },
+    {
+      question: '¿Cómo se asegura la calidad de las respuestas?',
+      answer: 'Entrenamos el asistente con tu información específica y casos de uso. Incluye validación humana opcional y mejora continua basada en interacciones reales.'
+    },
+    {
+      question: '¿Qué nivel de seguridad tiene?',
+      answer: 'Cumplimos con GDPR y normativas locales. Todos los datos están encriptados y almacenados en servidores certificados. No compartimos información con terceros.'
+    },
+    {
+      question: '¿Cuál es el costo?',
+      answer: 'Planes desde USD 99/mes con WhatsApp API incluido. Sin costos ocultos ni límites de mensajes en planes empresariales. Agenda una demo para conocer el plan ideal para tu negocio.'
+    },
+    {
+      question: '¿Qué soporte técnico ofrecen?',
+      answer: 'Soporte técnico en español por WhatsApp, email y videollamada. Tiempo de respuesta promedio: 2 horas. Planes enterprise incluyen soporte prioritario 24/7 y SLA garantizado.'
     },
   ];
 
@@ -439,6 +467,47 @@ const ProductCatalogImpl: React.FC = () => {
           </Container>
         </Box>
       </Box>
+
+      {/* FAQ Section */}
+      <Box
+        id="faq"
+        sx={{
+          maxWidth: 1440,
+          mx: "auto",
+          px: { xs: 2, md: 5 },
+          py: { xs: 8, md: 10 },
+          scrollMarginTop: "80px",
+        }}
+      >
+        <Box textAlign="center" mb={6}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontSize: { xs: 28, md: 40 },
+              fontWeight: 600,
+              color: "var(--text-primary)",
+              mb: 1,
+            }}
+          >
+            Preguntas frecuentes
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            maxWidth: 800,
+            mx: "auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          {faqs.map((faq, index) => (
+            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+          ))}
+        </Box>
+      </Box>
+
 
       {/* Footer */}
       <Footer />
