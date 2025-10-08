@@ -4,7 +4,8 @@ import Header from "../Header";
 import ButtonPrimary from "../ButtonPrimary";
 import ButtonSecondary from "../ButtonSecondary";
 import Footer from "../Footer";
-import { Users, Clock, Target } from "lucide-react";
+import { Users, Clock, Target, MessageSquare, Bot, Plug } from "lucide-react";
+import { CardProject } from "../CardProject";
 import '../styles/globals.css';
 
 const ProductCatalogImpl: React.FC = () => {
@@ -15,6 +16,31 @@ const ProductCatalogImpl: React.FC = () => {
       casosSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  const proyectos = [
+    {
+      icon: MessageSquare,
+      title: "SFAI Chat",
+      description:
+        "Asistente conversacional para ventas y soporte. Omnicanal, entrenado con tus datos.",
+      metric: "conversión a cita +32%",
+    },
+    {
+      icon: Bot,
+      title: "SFAI Agent",
+      description:
+        "Automatización de procesos y toma de decisiones. Orquestación y workflows.",
+      metric: "tareas automáticas +85%",
+    },
+    {
+      icon: Plug,
+      title: "SFAI Connect",
+      description:
+        "Integraciones seguras: CRM, ecommerce, ERP, n8n/Zapier, webhooks y APIs.",
+      metric: "tiempo de setup -70%",
+    },
+  ];
+
 
   return (
     <Box
@@ -66,7 +92,7 @@ const ProductCatalogImpl: React.FC = () => {
         </Box>
 
         {/* Hero Section */}
-        <Grid container spacing={6} alignItems="center" sx={{ mb: 8 }}>
+        <Grid container spacing={6} alignItems="center" sx={{ mb: 15 }}>
           {/* Texto Hero */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
@@ -180,6 +206,30 @@ const ProductCatalogImpl: React.FC = () => {
             </Box>
           </Grid>
         </Grid>
+
+        {/* Proyectos SFAI */}
+        <Box sx={{ mb: 12 }}>
+          <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, textAlign: "center", color: "text.primary" }}>
+            Proyectos y Servicios SFAI
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 6, textAlign: "center", color: "text.secondary" }}>
+            Tecnología de IA adaptada a tu negocio
+          </Typography>
+
+          <Grid container spacing={4}>
+            {proyectos.map((proyecto, index) => (
+              <Grid key={index} size={{ xs: 12, md: 6, lg: 4 }}>
+                <CardProject
+                  icon={proyecto.icon}
+                  title={proyecto.title}
+                  description={proyecto.description}
+                  metric={proyecto.metric}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
       </Box>
 
       {/* Footer */}
