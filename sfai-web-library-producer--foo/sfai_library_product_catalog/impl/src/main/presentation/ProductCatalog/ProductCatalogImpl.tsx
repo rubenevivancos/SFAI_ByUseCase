@@ -4,8 +4,9 @@ import Header from "../Header";
 import ButtonPrimary from "../ButtonPrimary";
 import ButtonSecondary from "../ButtonSecondary";
 import Footer from "../Footer";
-import { Users, Clock, Target, MessageSquare, Bot, Plug } from "lucide-react";
+import { Users, Clock, Target, MessageSquare, Bot, Plug, TrendingUp, HeadphonesIcon, Calendar, ShoppingCart, CheckCircle2 } from "lucide-react";
 import { CardProject } from "../CardProject";
+import { CardUseCase } from "../CardUseCase";
 import '../styles/globals.css';
 
 const ProductCatalogImpl: React.FC = () => {
@@ -38,6 +39,46 @@ const ProductCatalogImpl: React.FC = () => {
       description:
         "Integraciones seguras: CRM, ecommerce, ERP, n8n/Zapier, webhooks y APIs.",
       metric: "tiempo de setup -70%",
+    },
+  ];
+
+  const casosDeUso = [
+    {
+      icon: TrendingUp,
+      title: "Leads y calificación automática",
+      description: "Prioridad por intención y derivación inteligente.",
+      metric: "leads calificados +42%",
+      badge: "Recomendado",
+    },
+    {
+      icon: HeadphonesIcon,
+      title: "Soporte 24/7 sin espera",
+      description: "FAQ, estados y devoluciones.",
+      metric: "tiempo de respuesta -87%",
+    },
+    {
+      icon: Calendar,
+      title: "Agendamiento y recordatorios",
+      description: "Turnos, test drives, visitas.",
+      metric: "no-shows -62%",
+    },
+    {
+      icon: Clock,
+      title: "Cotizaciones y recupero",
+      description: "Seguimiento proactivo y cobros.",
+      metric: "recuperación +45%",
+    },
+    {
+      icon: ShoppingCart,
+      title: "Catálogo y pagos",
+      description: "Enlaces de pago, stock y actualizaciones.",
+      metric: "conversión +38%",
+    },
+    {
+      icon: CheckCircle2,
+      title: "Postventa y NPS",
+      description: "Encuestas, alertas y fidelización.",
+      metric: "NPS +28 puntos",
     },
   ];
 
@@ -224,6 +265,30 @@ const ProductCatalogImpl: React.FC = () => {
                   title={proyecto.title}
                   description={proyecto.description}
                   metric={proyecto.metric}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* Casos de Uso por Industria */}
+        <Box id="casos" sx={{ mb: 12 }}>
+          <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, textAlign: "center", color: "text.primary" }}>
+            Casos de Uso por Industria
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 6, textAlign: "center", color: "text.secondary" }}>
+            Soluciones probadas para cada sector
+          </Typography>
+
+          <Grid container spacing={4}>
+            {casosDeUso.map((caso, index) => (
+              <Grid key={index} size={{ xs: 12, md: 6, lg: 4 }}>
+                <CardUseCase
+                  icon={caso.icon}
+                  title={caso.title}
+                  description={caso.description}
+                  metric={caso.metric}
+                  badge={caso.badge}
                 />
               </Grid>
             ))}
