@@ -1,15 +1,39 @@
-import React from "react";
-import { Box, Typography, Grid, Link } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  Grid,
+  Link,
+  IconButton,
+  Stack,
+  Container,
+} from "@mui/material";
 import Header from "../Header";
 import ButtonPrimary from "../ButtonPrimary";
 import ButtonSecondary from "../ButtonSecondary";
 import Footer from "../Footer";
-import { Users, Clock, Target, MessageSquare, Bot, Plug, TrendingUp, HeadphonesIcon, Calendar, ShoppingCart, CheckCircle2 } from "lucide-react";
+import { Users, Clock, Target, MessageSquare, Bot, Plug, TrendingUp, HeadphonesIcon, Calendar, ShoppingCart, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { CardProject } from "../CardProject";
 import { CardUseCase } from "../CardUseCase";
+import { Testimonial } from "../Testimonial";
 import '../styles/globals.css';
 
 const ProductCatalogImpl: React.FC = () => {
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) =>
+      prev === testimonials.length - 1 ? 0 : prev + 1
+    );
+  };
+
   const handleScrollToCasos = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const casosSection = document.getElementById("casos");
@@ -82,6 +106,26 @@ const ProductCatalogImpl: React.FC = () => {
     },
   ];
 
+  const testimonials = [
+    {
+      quote: 'Disminuimos el tiempo de respuesta un 87% en 3 semanas.',
+      name: 'María González',
+      role: 'Directora Comercial',
+      company: 'AutoMax'
+    },
+    {
+      quote: 'El asistente nos generó +28% test drives comparado con el trimestre anterior.',
+      name: 'Carlos Martínez',
+      role: 'Gerente de Ventas',
+      company: 'Premium Motors'
+    },
+    {
+      quote: 'Recuperamos leads que antes se perdían. La inversión se pagó sola en el primer mes.',
+      name: 'Ana Silva',
+      role: 'CEO',
+      company: 'Propiedades del Sur'
+    },
+  ];
 
   return (
     <Box
@@ -295,6 +339,105 @@ const ProductCatalogImpl: React.FC = () => {
           </Grid>
         </Box>
 
+        {/* Testimonials Carousel */}
+        <Box
+          sx={{
+            maxWidth: 1440,
+            mx: "auto",
+            px: { xs: 2, md: 5 },
+            py: { xs: 6, md: 8 },
+          }}
+        >
+          <Box textAlign="center" mb={6}>
+            <Typography
+              variant="h4"
+              sx={{
+                fontSize: { xs: 28, md: 40 },
+                fontWeight: 600,
+                color: "var(--text-primary)",
+                mb: 1,
+              }}
+            >
+              Lo que dicen nuestros clientes
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: "1rem", md: "1.125rem" },
+                color: "var(--text-secondary)",
+              }}
+            >
+              Más de 10 empresas ya optimizan su canal digital con SFAI
+            </Typography>
+          </Box>
+
+          <Container maxWidth="sm" sx={{ position: "relative" }}>
+            <Testimonial {...testimonials[currentTestimonial]} />
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
+              mt={4}
+            >
+              <IconButton
+                onClick={prevTestimonial}
+                sx={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  bgcolor: "var(--surface-glass)",
+                  border: "1px solid var(--surface-glass-border)",
+                  backdropFilter: "blur(16px)",
+                  boxShadow: "var(--glass-shadow)",
+                  "&:hover": { bgcolor: "var(--neutral)" },
+                }}
+              >
+                <ChevronLeft
+                  style={{ width: 20, height: 20, color: "var(--text-primary)" }}
+                />
+              </IconButton>
+
+              <Stack direction="row" spacing={1}>
+                {testimonials.map((_, index) => (
+                  <Box
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    sx={{
+                      width: index === currentTestimonial ? 24 : 8,
+                      height: 8,
+                      borderRadius: "999px",
+                      bgcolor:
+                        index === currentTestimonial
+                          ? "var(--accent)"
+                          : "var(--neutral)",
+                      transition: "all 0.2s ease",
+                      cursor: "pointer",
+                    }}
+                  />
+                ))}
+              </Stack>
+
+              <IconButton
+                onClick={nextTestimonial}
+                sx={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  bgcolor: "var(--surface-glass)",
+                  border: "1px solid var(--surface-glass-border)",
+                  backdropFilter: "blur(16px)",
+                  boxShadow: "var(--glass-shadow)",
+                  "&:hover": { bgcolor: "var(--neutral)" },
+                }}
+              >
+                <ChevronRight
+                  style={{ width: 20, height: 20, color: "var(--text-primary)" }}
+                />
+              </IconButton>
+            </Stack>
+          </Container>
+        </Box>
       </Box>
 
       {/* Footer */}
