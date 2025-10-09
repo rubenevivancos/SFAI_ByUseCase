@@ -17,12 +17,6 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
 }) => {
   const theme = useTheme();
 
-  const sizeStyles =
-    size === "large"
-      ? { px: 4, py: 2, fontSize: "1.125rem", fontWeight: 600 }
-      : { px: 3, py: 1.5, fontSize: "1rem", fontWeight: 600 };
-
-  // Colores originales respetados
   const baseColor = "#DC9518";
   const hoverColor = "#B87610";
 
@@ -32,11 +26,38 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
       onClick={onClick}
       variant="contained"
       sx={{
-        ...sizeStyles,
+        display: "flex",
+        alignItems: "center",
+        width: { xs: "100%", sm: "auto" },
         textTransform: "none",
         borderRadius: "20px",
         backgroundColor: baseColor,
         color: "#fff",
+        fontWeight: 600,
+        textAlign: {
+          xs: "left",
+          sm: "center",
+        },
+        fontSize: {
+          xs: size === "large" ? "0.95rem" : "0.9rem",
+          sm: size === "large" ? "1rem" : "0.95rem",
+          md: size === "large" ? "1.125rem" : "1rem",
+        },
+        pl: {
+          xs: size === "large" ? 3.5 : 3, 
+          sm: size === "large" ? 4 : 3.5,
+          md: size === "large" ? 4 : 3.5,
+        },
+        pr: {
+          xs: size === "large" ? 2 : 3, 
+          sm: size === "large" ? 4 : 3.5,
+          md: size === "large" ? 4 : 3.5,
+        },
+        py: {
+          xs: size === "large" ? 1.25 : 1,
+          sm: size === "large" ? 1.5 : 1.25,
+          md: size === "large" ? 2 : 1.5,
+        },
         transition: "all 0.2s ease-out",
         "&:hover": {
           backgroundColor: hoverColor,

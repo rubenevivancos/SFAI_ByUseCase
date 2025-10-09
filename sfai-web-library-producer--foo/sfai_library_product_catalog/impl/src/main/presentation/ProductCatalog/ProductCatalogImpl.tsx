@@ -17,11 +17,14 @@ import { CardProject } from "../CardProject";
 import { CardUseCase } from "../CardUseCase";
 import { Testimonial } from "../Testimonial";
 import { FAQItem } from "../FAQItem";
+import { useTheme } from "@mui/material/styles";
 import '../styles/globals.css';
 
 const ProductCatalogImpl: React.FC = () => {
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const theme = useTheme();
+
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) =>
@@ -158,7 +161,7 @@ const ProductCatalogImpl: React.FC = () => {
   return (
     <Box
       sx={(theme) => ({
-        width: "100vw",
+        width: "100%",
         minHeight: "100vh",
         bgcolor: theme.palette.mode === "dark"
             ? "#0F1419" // fondo dark exacto
@@ -176,20 +179,27 @@ const ProductCatalogImpl: React.FC = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          mt: { xs: 8, md: 10 },
+          mt: { xs: 12, md: 10 },
           px: { xs: 2, md: 20 },
           py: 6,
         }}
       >
         {/* Breadcrumb */}
         <Box sx={{ mb: 4 }}>
-          <nav
-            style={{
+          <Box
+            component="nav"
+            sx={{
               display: "flex",
+              flexWrap: "wrap", // permite que los elementos bajen de línea
               alignItems: "center",
-              gap: "8px",
-              fontSize: "0.9rem",
+              gap: "6px",
               color: "var(--mui-palette-text-secondary)",
+              wordBreak: "break-word", // evita cortes visuales
+              lineHeight: 1.3,
+              fontSize: theme.typography.pxToRem(13), // base
+              [theme.breakpoints.up("sm")]: {
+                fontSize: theme.typography.pxToRem(14),
+              },
             }}
           >
             <Link href="/" underline="hover" color="inherit">
@@ -201,7 +211,7 @@ const ProductCatalogImpl: React.FC = () => {
             </Link>
             <span>/</span>
             <Typography color="text.primary">Por Casos de Uso</Typography>
-          </nav>
+          </Box>
         </Box>
 
         {/* Hero Section */}
@@ -233,10 +243,10 @@ const ProductCatalogImpl: React.FC = () => {
             </Typography>
 
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
-              <ButtonPrimary href="#casos" onClick={handleScrollToCasos}>
+              <ButtonPrimary href="#casos" onClick={handleScrollToCasos} size="large">
                 Explorar Casos de Uso
               </ButtonPrimary>
-              <ButtonSecondary href="{{link_contacto}}">
+              <ButtonSecondary href="{{link_contacto}}" size="large">
                 Contactar con un especialista
               </ButtonSecondary>
             </Box>
@@ -321,7 +331,7 @@ const ProductCatalogImpl: React.FC = () => {
         </Grid>
 
         {/* Proyectos SFAI */}
-        <Box sx={{ mb: 12 }}>
+        <Box id="proyectos" sx={{ mb: 12, scrollMarginTop: "100px" }}>
           <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, textAlign: "center", color: "text.primary" }}>
             Proyectos y Servicios SFAI
           </Typography>
@@ -344,7 +354,7 @@ const ProductCatalogImpl: React.FC = () => {
         </Box>
 
         {/* Casos de Uso por Industria */}
-        <Box id="casos" sx={{ mb: 12 }}>
+        <Box id="casos" sx={{ mb: 12, scrollMarginTop: "100px" }}>
           <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, textAlign: "center", color: "text.primary" }}>
             Casos de Uso por Industria
           </Typography>
@@ -476,7 +486,7 @@ const ProductCatalogImpl: React.FC = () => {
           mx: "auto",
           px: { xs: 2, md: 5 },
           py: { xs: 8, md: 10 },
-          scrollMarginTop: "80px",
+          scrollMarginTop: "100px",
         }}
       >
         <Box textAlign="center" mb={6}>

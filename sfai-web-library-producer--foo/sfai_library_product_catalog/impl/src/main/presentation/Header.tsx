@@ -30,15 +30,19 @@ const Header: React.FC = () => {
     <AppBar
       position="fixed"
       sx={{
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1300,
         backgroundColor: isDarkMode
-          ? "#0F1419" // exactamente el color del fondo oscuro
-          : "rgba(255,255,255,0.7)",
+          ? "#0F1419"
+          : "rgba(255, 255, 255, 0.6)", // mismo glass claro
         color: "text.primary",
-        backdropFilter: isDarkMode ? "none" : "blur(16px)",
+        backdropFilter: "blur(16px)",
         borderBottom: isDarkMode
           ? "1px solid rgba(255,255,255,0.1)"
-          : "1px solid rgba(0,0,0,0.1)",
-        boxShadow: "none",
+          : "1px solid rgba(255,255,255,0.6)",
+        boxShadow: "0 8px 40px rgba(16, 24, 40, 0.08)",
         transition: "background-color 0.3s ease, border-color 0.3s ease",
       }}
     >
@@ -48,21 +52,22 @@ const Header: React.FC = () => {
           mx: "auto",
           width: "100%",
           px: { xs: 2, md: 5 },
-          py: 1,
+          py: 2,
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-        {/* Logo y navegación */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+        {/* Logo + navegación */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 2, lg: 4 } }}>
           <Typography
             variant="h6"
             component="a"
             href="/"
             sx={{
-              color: "text.primary",
               fontWeight: 600,
+              fontSize: "1.25rem",
+              color: "text.primary",
               textDecoration: "none",
               transition: "color 0.3s",
               "&:hover": { color: "primary.main" },
@@ -71,16 +76,22 @@ const Header: React.FC = () => {
             SFAI
           </Typography>
 
+          {/* Menú solo visible en escritorio */}
           <Box sx={{ display: { xs: "none", lg: "flex" }, gap: 3 }}>
             {[
-              { href: "#proyectos", label: "Proyectos" },
-              { href: "#casos", label: "Casos de Uso" },
-              { href: "#faq", label: "FAQ" },
+                { id: "proyectos", label: "Proyectos" },
+                { id: "casos", label: "Casos de Uso" },
+                { id: "faq", label: "FAQ" },
             ].map((item) => (
               <Button
-                key={item.href}
-                href={item.href}
-                onClick={item.href === "#casos" ? handleScrollToCasos : undefined}
+                key={item.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById(item.id);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
                 sx={{
                   color: "text.secondary",
                   textTransform: "none",
@@ -94,8 +105,9 @@ const Header: React.FC = () => {
           </Box>
         </Box>
 
-        {/* Botones y modo oscuro */}
+        {/* Acciones: modo oscuro + botones */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+          {/* Toggle de modo oscuro */}
           <IconButton
             onClick={toggleColorMode}
             sx={{
@@ -103,14 +115,16 @@ const Header: React.FC = () => {
               border: "1px solid",
               borderColor: isDarkMode
                 ? "rgba(255,255,255,0.1)"
-                : "rgba(0,0,0,0.1)",
-              backgroundColor: "background.paper",
+                : "rgba(255,255,255,0.6)",
+              backgroundColor: isDarkMode ? "#0F1419" : "rgba(255,255,255,0.7)",
               transition: "all 0.2s ease",
               "&:hover": {
                 backgroundColor: isDarkMode ? "grey.800" : "grey.100",
               },
             }}
-            aria-label={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+            aria-label={
+              isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
+            }
           >
             {isDarkMode ? (
               <Sun size={20} color={theme.palette.primary.main} />
@@ -119,15 +133,19 @@ const Header: React.FC = () => {
             )}
           </IconButton>
 
-          <ButtonPrimary href="#casos" onClick={handleScrollToCasos} size="default">
+          {/* Botón principal (siempre visible) */}
+          <ButtonPrimary
+            href="#casos"
+            onClick={handleScrollToCasos}
+            size="default"
+          >
             Explorar Casos de Uso
           </ButtonPrimary>
 
-          <Box sx={{ display: { xs: "none", md: "inline-flex" } }}>
+          {/* Botón secundario */}
             <ButtonSecondary href="{{link_contacto}}" size="default">
               Contactar especialista
             </ButtonSecondary>
-          </Box>
         </Box>
       </Toolbar>
     </AppBar>

@@ -1,11 +1,12 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import { useTheme } from "@mui/material/styles";
 
 interface ButtonSecondaryProps {
   href?: string;
   size?: "default" | "large";
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<any>) => void;
 }
 
 const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
@@ -14,6 +15,11 @@ const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
   children,
   onClick,
 }) => {
+  const theme = useTheme();
+
+  const baseColor = "#DC9518";
+  const hoverColor = "#B87610";
+
   return (
     <Button
       variant="outlined"
@@ -22,20 +28,33 @@ const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
       sx={{
         textTransform: "none",
         fontWeight: 600,
-        fontSize: size === "large" ? "1.125rem" : "1rem",
-        px: size === "large" ? 4 : 3,
-        py: size === "large" ? 2 : 1.5,
         borderWidth: 2,
-        borderColor: "#DC9518",
-        color: "#DC9518",
+        borderColor: baseColor,
+        color: baseColor,
         borderRadius: "20px",
+        width: { xs: "100%", sm: "auto" },
+        fontSize: {
+          xs: size === "large" ? "0.95rem" : "0.9rem",
+          sm: size === "large" ? "1rem" : "0.95rem",
+          md: size === "large" ? "1.125rem" : "1rem",
+        },
+        px: {
+          xs: size === "large" ? 2.5 : 2,
+          sm: size === "large" ? 3 : 2.5,
+          md: size === "large" ? 4 : 3,
+        },
+        py: {
+          xs: size === "large" ? 1.25 : 1,
+          sm: size === "large" ? 1.5 : 1.25,
+          md: size === "large" ? 2 : 1.5,
+        },
         transition: "all 0.2s ease-out",
         "&:hover": {
           bgcolor: "rgba(220, 149, 24, 0.05)",
-          borderColor: "#B87610",
-          color: "#B87610",
+          borderColor: hoverColor,
+          color: hoverColor,
           transform: "translateY(-2px)",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          boxShadow: theme.shadows[4],
         },
       }}
     >
