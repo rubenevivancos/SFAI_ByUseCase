@@ -1,15 +1,15 @@
 //export { default as ProductCatalog } from "../open/src/main/ProductCatalog";
 import React from "react";
 import { ModuleProvider } from "../impl/src/main/presentation/MaterialUIThemeProvider/ModuleProvider";
-import ProductCatalog from "../open/src/main/ProductCatalog";
+import ByUseCaseMUI from "../open/src/main/ByUseCaseMUI";
 
 
-const ProductCatalogMaterialUI = () => {
+const ByUseCase = () => {
     return (
       <ModuleProvider>
-        <ProductCatalog />
+        <ByUseCaseMUI />
       </ModuleProvider>
     );
 };
 
-export default ProductCatalogMaterialUI;
+export default ByUseCase;

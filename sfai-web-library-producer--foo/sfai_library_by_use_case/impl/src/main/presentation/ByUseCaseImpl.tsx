@@ -8,19 +8,19 @@ import {
   Stack,
   Container,
 } from "@mui/material";
-import Header from "../Header";
-import ButtonPrimary from "../ButtonPrimary";
-import ButtonSecondary from "../ButtonSecondary";
-import Footer from "../Footer";
+import Header from "./Header";
+import ButtonPrimary from "./ButtonPrimary";
+import ButtonSecondary from "./ButtonSecondary";
+import Footer from "./Footer";
 import { Users, Clock, Target, MessageSquare, Bot, Plug, TrendingUp, HeadphonesIcon, Calendar, ShoppingCart, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
-import { CardProject } from "../CardProject";
-import { CardUseCase } from "../CardUseCase";
-import { Testimonial } from "../Testimonial";
-import { FAQItem } from "../FAQItem";
+import { CardProject } from "./CardProject";
+import { CardUseCase } from "./CardUseCase";
+import { Testimonial } from "./Testimonial";
+import { FAQItem } from "./FAQItem";
 import { useTheme } from "@mui/material/styles";
-import '../styles/globals.css';
+import './styles/globals.css';
 
-const ProductCatalogImpl: React.FC = () => {
+const ByUseCaseImpl: React.FC = () => {
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const theme = useTheme();
@@ -625,4 +625,4 @@ const ProductCatalogImpl: React.FC = () => {
   );
 };
 
-export default ProductCatalogImpl;
+export default ByUseCaseImpl;
